@@ -28,7 +28,9 @@
           <a class="dropdown-item"  href="/customers/create">New Customer</a>
           <a class="dropdown-item"  href="/customers/search_by_phone">Search By Phone</a>
           <a class="dropdown-item"  href="/customers/search_by_name">Search By Name</a>
-          <a class="dropdown-item"  href="/customers/search_by_field">Search By Field</a>
+          <a class="dropdown-item"  href="/customers/search_by_email">Search By Email</a>
+          <a class="dropdown-item"  href="/customers/search_by_address">Search By Address</a>
+          <a class="dropdown-item"  href="/customers/search_by_fields">Search By Field</a>
           <a class="dropdown-item"  href="/customers/dynamic_search">Dynamic Search</a>
 
           <div class="dropdown-divider"></div>

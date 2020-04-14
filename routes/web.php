@@ -23,9 +23,8 @@ Route::get('/about', function(){
 
 Route::get('/contact', function(){
     $user= "Hussein Mohamed";
-    //return view('contact',["user"=>$user]);  // method 1
-  //  return view('contact') ->with(["user"=>$user]);    // method 2
-    return view('contact',compact('user'));  // method 3
+
+    return view('contact',compact('user'));  
 });
 
 Route::get('/customers', 'CustomersController@index');
@@ -38,7 +37,24 @@ Route::get('/customers/create', 'CustomersController@new');
 Route::get('/customers/search_by_phone','CustomersController@search_by_phone');
 Route::post('/customers/search_by_phone','CustomersController@result_by_phone');
 
-Route::get('customers/search_by_name','CustomersController@search_by_name');
+Route::get('/customers/search_by_name','CustomersController@search_by_name');
+Route::post('/customers/search_by_name','CustomersController@result_by_name');
+
+Route::get('/customers/search_by_email','CustomersController@search_by_email');
+Route::post('/customers/search_by_email','CustomersController@result_by_email');
+
+Route::get('/customers/search_by_address','CustomersController@search_by_address');
+Route::post('/customers/search_by_address','CustomersController@result_by_address');
+
+Route::get('/customers/search_by_fields','CustomersController@search_by_fields');
+Route::post('/customers/search_by_fields','CustomersController@result_by_fields');
+
+Route::get('/customers/dynamic_search','CustomersController@dynamic_search');
+Route::post('/customers/dynamic_search','CustomersController@result_dynamic_search');
+
+
+
+
 
 Route::get('/customers/{id}', 'CustomersController@show');
 
