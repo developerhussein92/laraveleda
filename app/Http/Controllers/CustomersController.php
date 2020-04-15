@@ -117,11 +117,17 @@ class CustomersController extends Controller
     public function result_dynamic_search()
     {
         $ds = request('ds');
+        $matching =request('matching');
 
-        $customers = Customer::where('cname',$ds)
-                            ->orWhere('cphone',$ds)
-                            ->orWhere('cemail',$ds)
-                            ->orWhere('caddress',$ds)->get();
+        if($matching == 'like')
+        {
+            $ds = '%'.$ds.'%';
+        }
+
+        $customers = Customer::where('cname',$matching,$ds)
+                           ->orWhere('cphone',$matching,$ds)
+                           ->orWhere('cemail',$matching,$ds)
+                           ->orWhere('caddress',$matching,$ds)->get();
 
         return view('dynamic_search',compact('customers'));
     }
