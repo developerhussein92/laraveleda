@@ -1,12 +1,12 @@
-@extends('layout')
+@extends('front.layout')
 
 @section('pagetitle')
-Customers List
+Deleted Customers List
 @endsection
 
 @section('pagecontent')
-  <h1 class="display-2">Customer List</h1>
-  <a href="/customers/create" class="btn btn-success mt-2 mb-2">Create New</a>
+  <h1 class="display-2">Deleted Customer List</h1>
+  
   <table class="table">
     <tr>
       <th>Customer Name</th>
@@ -22,8 +22,8 @@ Customers List
       <td>{{ $customer->cemail }}</td>
       <td>{{ $customer->caddress }}</td>
       <td>
-        <a href="/customers/{{ $customer->id }}" class="btn btn-secondary">View</a>
-        
+        {{-- <a href="/customers/{{ $customer->id }}" class="btn btn-secondary">View</a> --}}
+        <a href="/customers/{{ $customer->id }}/restore" class="btn btn-success">Restore</a>
       </td>
     </tr>
       @endforeach

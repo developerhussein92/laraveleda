@@ -27,11 +27,14 @@ Route::get('/contact', function(){
     return view('contact',compact('user'));  
 });
 
+// start customer controller route
+
 Route::get('/customers', 'CustomersController@index');
 
 Route::post('/customers', 'CustomersController@store');
 
 Route::get('/customers/create', 'CustomersController@new');
+Route::get('/customers/deleted', 'CustomersController@alldeleted');
 
 
 Route::get('/customers/search_by_phone','CustomersController@search_by_phone');
@@ -63,6 +66,14 @@ Route::get('/customers/{id}/edit', 'CustomersController@edit');
 Route::put('/customers/{id}', 'CustomersController@update');
 
 Route::delete('/customers/{id}/delete','CustomersController@destroy');
+
+Route::get('/customers/{id}/restore','CustomersController@restore_customer');
+// End customer controller route
+
+
+
+
+
 
 
 /*
