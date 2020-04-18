@@ -21,24 +21,5 @@
     <a href="/customers" class="mx-3 my-3 btn btn-secondary">Back</a>
   </form>
 
-@if(isset($customers))
-<table class="table">
-    <tr>
-        <td>Customer Name</td>
-        <td>Customer Phone	</td>
-        <td>Customer Email</td>
-        <td>Customer address</td>
-        <td>Action</td>
-    </tr>
-    @foreach($customers as $customer)
-        <tr>
-        <td>{{$customer->cname}}</td>
-        <td>{{$customer->cphone}}</td>
-        <td>{{$customer->cemail}}</td>
-        <td>{{$customer->caddress}}</td>
-        <td><a href="/customers/{{$customer->id}}" class="btn btn-secondary">View</a></td>
-        </tr>
-    @endforeach
-</table>
-@endif
+  @include('front.customers.search_results')
 @endsection

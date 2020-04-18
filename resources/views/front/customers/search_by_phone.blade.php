@@ -13,27 +13,5 @@ Customers ListSearch By Phone
     <a href="/customers" class="mx-3 my-3 btn btn-secondary">Back</a>
   </form>
   
-@if(isset($customers))
-  <table class="table mt-4">
-    <tr>
-      <th>Customer Name</th>
-      <th>Customer Phone</th>
-      <th>Customer Email</th>
-      <th>Customer address</th>
-      <th>Action</th>
-    </tr>
-    @foreach($customers as $customer)
-    <tr>
-      <td>{{ $customer->cname }}</td>
-      <td>{{ $customer->cphone }}</td>
-      <td>{{ $customer->cemail }}</td>
-      <td>{{ $customer->caddress }}</td>
-      <td>
-        <a href="/customers/{{ $customer->id }}" class="btn btn-secondary">View</a>
-        
-      </td>
-    </tr>
-      @endforeach
-    </table>
-@endif
+@include('front.customers.search_results')
 @endsection

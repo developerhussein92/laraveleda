@@ -35,6 +35,7 @@ Route::post('/customers', 'CustomersController@store');
 
 Route::get('/customers/create', 'CustomersController@new');
 Route::get('/customers/deleted', 'CustomersController@alldeleted');
+Route::get('/customers/restoreall','CustomersController@restoreall');
 
 
 Route::get('/customers/search_by_phone','CustomersController@search_by_phone');

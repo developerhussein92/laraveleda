@@ -21,18 +21,18 @@ class CustomersController extends Controller
         return view('front.customers.new_customer');
     }
 
-    public function store(Request $req){
-       
-        $ext = $extension = $req->file('cimg')->extension();
-        $filename = $req->file('cimg')->getClientOriginalName();
-
-        $req->file('cimg')->storeAs('/public/images/customers',$filename);
+    public function store(){
         $c = new Customer;
         $c->cname = request('cname');
         $c->cphone = request('cphone');
         $c->cemail = request('cemail');
         $c->caddress = request('caddress');
-        $c->cimg = $filename;
+        if(!empty($img = request('cimg')))
+        {
+            $imgname = $img->getClientOriginalName();
+            $img->storeAs('/public/images/customers',$imgname);
+            $c->cimg = $imgname;
+        }
         $c->save();
         return redirect('/customers');
         
@@ -45,11 +45,20 @@ class CustomersController extends Controller
 
     
     public function update($id){
+      
         $c = Customer::find($id);
         $c->cname = request('cname');
         $c->cphone = request('cphone');
         $c->cemail = request('cemail');
         $c->caddress = request('caddress');
+
+        if(!empty($img = request('cimg')))
+        {
+            $imgname = $img->getClientOriginalName();
+            $img->storeAs('/public/images/customers',$imgname);
+            $c->cimg = $imgname;
+        }
+
         $c->save();
         return redirect('/customers/'.$id);
     }
@@ -151,6 +160,11 @@ class CustomersController extends Controller
                   where('id',$id)->
                   restore();
 
+        return redirect('/customers');
+    }
+    public function restoreall()
+    {
+        Customer::onlyTrashed()->restore();
         return redirect('/customers');
     }
 
