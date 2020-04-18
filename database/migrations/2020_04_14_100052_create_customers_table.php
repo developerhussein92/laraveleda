@@ -18,7 +18,7 @@ class CreateCustomersTable extends Migration
             $table->string('cname');
             $table->string('cphone');
             $table->string('caddress');
-            $table->string('cemail');
+            $table->string('cemail')->indexed();
             $table->softDeletes();
             $table->timestamps();
         });

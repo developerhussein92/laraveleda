@@ -63,7 +63,7 @@ Route::get('/customers/{id}', 'CustomersController@show');
 
 Route::get('/customers/{id}/edit', 'CustomersController@edit');
 
-Route::put('/customers/{id}', 'CustomersController@update');
+Route::put('/customers/{id}', 'CustomersController@update');Route::get('/customers/deleted', 'CustomersController@alldeleted');
 
 Route::delete('/customers/{id}/delete','CustomersController@destroy');
 

@@ -9,6 +9,7 @@ Customers List
   <a href="/customers/create" class="btn btn-success mt-2 mb-2">Create New</a>
   <table class="table">
     <tr>
+      <th>Img</th>
       <th>Customer Name</th>
       <th>Customer Phone</th>
       <th>Customer Email</th>
@@ -17,6 +18,7 @@ Customers List
     </tr>
     @foreach($customers as $customer)
     <tr>
+    <td><img width="40" height="40" src="{{ url('storage/images/customers/'.$customer->cimg) }}" alt="error" /></td>
       <td>{{ $customer->cname }}</td>
       <td>{{ $customer->cphone }}</td>
       <td>{{ $customer->cemail }}</td>

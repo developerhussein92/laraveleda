@@ -21,19 +21,21 @@ class CustomersController extends Controller
         return view('front.customers.new_customer');
     }
 
-    public function store(){
+    public function store(Request $req){
+       
+        $ext = $extension = $req->file('cimg')->extension();
+        $filename = $req->file('cimg')->getClientOriginalName();
 
-    
-
-
+        $req->file('cimg')->storeAs('/public/images/customers',$filename);
         $c = new Customer;
         $c->cname = request('cname');
         $c->cphone = request('cphone');
         $c->cemail = request('cemail');
         $c->caddress = request('caddress');
-        
+        $c->cimg = $filename;
         $c->save();
         return redirect('/customers');
+        
     }
 
     public function edit($id){
