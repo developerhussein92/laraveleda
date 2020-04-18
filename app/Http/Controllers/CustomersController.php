@@ -165,9 +165,19 @@ class CustomersController extends Controller
     public function restoreall()
     {
         Customer::onlyTrashed()->restore();
-        return redirect('/customers');
+        
     }
 
+    public function multiplerestore()
+    {
+         $custs = request('custs');
+        foreach ($custs as $cust){
+            Customer::onlyTrashed()->find($cust)->restore();
+        }
+        return redirect('/customers');
+
+        
+    }
 
 
 }

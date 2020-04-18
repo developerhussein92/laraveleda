@@ -29,53 +29,52 @@ Route::get('/contact', function(){
 
 // start customer controller route
 
-Route::get('/customers', 'CustomersController@index');
+Route::prefix('customers')->group(function(){
 
-Route::post('/customers', 'CustomersController@store');
+  Route::get('', 'CustomersController@index');
 
-Route::get('/customers/create', 'CustomersController@new');
-Route::get('/customers/deleted', 'CustomersController@alldeleted');
-Route::get('/customers/restoreall','CustomersController@restoreall');
+  Route::post('', 'CustomersController@store');
 
-
-Route::get('/customers/search_by_phone','CustomersController@search_by_phone');
-Route::post('/customers/search_by_phone','CustomersController@result_by_phone');
-
-Route::get('/customers/search_by_name','CustomersController@search_by_name');
-Route::post('/customers/search_by_name','CustomersController@result_by_name');
-
-Route::get('/customers/search_by_email','CustomersController@search_by_email');
-Route::post('/customers/search_by_email','CustomersController@result_by_email');
-
-Route::get('/customers/search_by_address','CustomersController@search_by_address');
-Route::post('/customers/search_by_address','CustomersController@result_by_address');
-
-Route::get('/customers/search_by_fields','CustomersController@search_by_fields');
-Route::post('/customers/search_by_fields','CustomersController@result_by_fields');
-
-Route::get('/customers/dynamic_search','CustomersController@dynamic_search');
-Route::post('/customers/dynamic_search','CustomersController@result_dynamic_search');
+  Route::get('create', 'CustomersController@new');
+  Route::get('deleted', 'CustomersController@alldeleted');
+  Route::get('restoreall','CustomersController@restoreall');
+  Route::get('multiplerestore','CustomersController@multiplerestore');
 
 
 
+  Route::get('search_by_phone','CustomersController@search_by_phone');
+  Route::post('search_by_phone','CustomersController@result_by_phone');
+
+  Route::get('search_by_name','CustomersController@search_by_name');
+  Route::post('search_by_name','CustomersController@result_by_name');
+
+  Route::get('search_by_email','CustomersController@search_by_email');
+  Route::post('search_by_email','CustomersController@result_by_email');
+
+  Route::get('search_by_address','CustomersController@search_by_address');
+  Route::post('search_by_address','CustomersController@result_by_address');
+
+  Route::get('search_by_fields','CustomersController@search_by_fields');
+  Route::post('search_by_fields','CustomersController@result_by_fields');
+
+  Route::get('dynamic_search','CustomersController@dynamic_search');
+  Route::post('dynamic_search','CustomersController@result_dynamic_search');
+
+  Route::get('{id}', 'CustomersController@show');
+
+  Route::get('{id}/edit', 'CustomersController@edit');
+
+  Route::put('{id}', 'CustomersController@update');
 
 
-Route::get('/customers/{id}', 'CustomersController@show');
+  Route::delete('{id}/delete','CustomersController@destroy');
 
-Route::get('/customers/{id}/edit', 'CustomersController@edit');
+  Route::get('{id}/restore','CustomersController@restore_customer');
 
-Route::put('/customers/{id}', 'CustomersController@update');Route::get('/customers/deleted', 'CustomersController@alldeleted');
+});
 
-Route::delete('/customers/{id}/delete','CustomersController@destroy');
 
-Route::get('/customers/{id}/restore','CustomersController@restore_customer');
 // End customer controller route
-
-
-
-
-
-
 
 /*
 Route::get('/customers', function(){
