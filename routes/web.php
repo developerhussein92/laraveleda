@@ -74,36 +74,26 @@ Route::prefix('customers')->group(function(){
 });
 
 
+
 // End customer controller route
 
-/*
-Route::get('/customers', function(){
-    return view('customers_list');
-});
 
 
-Route::get('/customers/create', function(){
-    return view('new_customer');
-});
+/**Start Cities Controller Route  */
 
-Route::get('/services', function(){
-  $services = ["Export" , "Import" , "Events" , "Trade Missions"];
-  $result = "<h1>We offer</h1> <ul>";
-    foreach ($services as $service) {
-      $result .= "<li>$service</li>";
-    }
-  $result .= "</ul>";
-  return $result;
-});
+  Route::prefix('cities')->group(function(){
+    Route::get('','CitiesController@index');
+    Route::get('create','CitiesController@create');
+    Route::post('','CitiesController@store');
+    Route::delete('{id}/delete','CitiesController@destroy'); 
+    Route::get('{id}/edit','CitiesController@edit');
+    Route::put('{id}/update','CitiesController@update');
+    Route::get('deleted','CitiesController@alldeleted');
+    Route::get('{id}/restore','CitiesController@restore');
+    Route::get('restoreall','CitiesController@restoreall');
+    Route::get('forcedelete','CitiesController@forcedelete');
+    Route::get('{id}/forcedelete','CitiesController@cityforcedelete');
+    
+  });
 
-
-Route::get('/reach', function(){
-  $user = request('user');
-  return "<h1>Tuse this page for  $user </h1>";
-});
-
-
-Route::get('/products/{pname}', function($pname){
-    return "<h1>This page view $pname profile and details </h1>";
-});
-*/
+/**End Cities Controller Route  */

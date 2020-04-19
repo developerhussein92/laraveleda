@@ -21,13 +21,15 @@ class CustomersController extends Controller
         return view('front.customers.new_customer');
     }
 
-    public function store(){
+    public function store(Request $req){
+        
+        request()->validate();
         $c = new Customer;
-        $c->cname = request('cname');
-        $c->cphone = request('cphone');
-        $c->cemail = request('cemail');
-        $c->caddress = request('caddress');
-        if(!empty($img = request('cimg')))
+        $c->cname = $req->cname;
+        $c->cphone = $req->cphone;
+        $c->cemail =$req->cemail;
+        $c->caddress = $req->caddress;
+        if(!empty($img = $req->file('cimg')))
         {
             $imgname = $img->getClientOriginalName();
             $img->storeAs('/public/images/customers',$imgname);
@@ -54,7 +56,7 @@ class CustomersController extends Controller
 
         if(!empty($img = request('cimg')))
         {
-            $imgname = $img->getClientOriginalName();
+            $imgname = "cust".$img->getClientOriginalName();
             $img->storeAs('/public/images/customers',$imgname);
             $c->cimg = $imgname;
         }
