@@ -25,13 +25,15 @@ Cities List
       <td>
         
         <div class="row">
-          <a href="/cities/{{ $city->id }}/view" class="mx-2  btn btn-primary">View City Customers</a>
+          
           <a href="/cities/{{ $city->id }}/edit" class="mx-2  btn btn-primary">Edit</a>
 
         <form action="/cities/{{$city->id}}/delete" class="form-inline" method="post">
           @method('DELETE')
           <button class=" mx-2 btn btn-danger" type="submit">Delete</button>
         </form>
+
+        <a href="/cities/{{ $city->id }}/view" class="mx-2  btn btn-primary">View City Customers</a>
 
         </div>
         
