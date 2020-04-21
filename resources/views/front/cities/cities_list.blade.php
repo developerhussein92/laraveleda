@@ -19,12 +19,13 @@ Cities List
     <tr>
     
       <td>{{ $city->id }}</td>
-      <td>{{ $city->en_city_name }}</td>
       <td>{{ $city->ar_city_name }}</td>
+      <td>{{ $city->en_city_name }}</td>
     
       <td>
         
         <div class="row">
+          <a href="/cities/{{ $city->id }}/view" class="mx-2  btn btn-primary">View City Customers</a>
           <a href="/cities/{{ $city->id }}/edit" class="mx-2  btn btn-primary">Edit</a>
 
         <form action="/cities/{{$city->id}}/delete" class="form-inline" method="post">
@@ -37,5 +38,6 @@ Cities List
       </td>
     </tr>
       @endforeach
+      {{$cities->onEachSide(1)->links() }}
     </table>
 @endsection

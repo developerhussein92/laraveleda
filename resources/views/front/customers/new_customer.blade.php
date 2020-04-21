@@ -24,6 +24,17 @@ New Customer
       <input type="text" name="cemail" class="form-control">
     </div>
 
+ 
+
+    <div class="form-group">
+      <label for="cemail">Customer City:</label>
+      <select name="city_id" id="" class="form-control">
+        @foreach($cities as $city)
+          <option value="{{$city->id}}">{{$city->en_city_name}}</option>
+        @endforeach
+    </select>
+    </div>
+
     <div class="form-group">
       <label for="cimg">Customer Image:</label>
       <input type="file" name="cimg" class="form-control">

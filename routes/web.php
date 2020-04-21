@@ -93,6 +93,7 @@ Route::prefix('customers')->group(function(){
     Route::get('restoreall','CitiesController@restoreall');
     Route::get('forcedelete','CitiesController@forcedelete');
     Route::get('{id}/forcedelete','CitiesController@cityforcedelete');
+    Route::get('{id}/view','CitiesController@show');
     
   });
 

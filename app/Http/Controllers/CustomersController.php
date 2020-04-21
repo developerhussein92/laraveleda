@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 
+use App\City;
+
 class CustomersController extends Controller
 {
     public function index(){
         $customers = Customer::all();
+  
         return view('front.customers.customers_list',compact("customers"));
     }
 
@@ -18,12 +21,13 @@ class CustomersController extends Controller
     }
 
     public function new(){
-        return view('front.customers.new_customer');
+        $cities = City::all();
+        return view('front.customers.new_customer',compact('cities'));
     }
 
     public function store(Request $req){
         
-        request()->validate();
+       
         $c = new Customer;
         $c->cname = $req->cname;
         $c->cphone = $req->cphone;
@@ -35,6 +39,7 @@ class CustomersController extends Controller
             $img->storeAs('/public/images/customers',$imgname);
             $c->cimg = $imgname;
         }
+        $c->city_id = $req->city_id;
         $c->save();
         return redirect('/customers');
         
@@ -42,7 +47,8 @@ class CustomersController extends Controller
 
     public function edit($id){
         $customer = Customer::find($id);
-        return view('front.customers.update_customer',compact("customer"));
+        $cities = city::all();
+        return view('front.customers.update_customer',compact("customer","cities"));
     }
 
     

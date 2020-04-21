@@ -26,6 +26,17 @@ Update Customer
             <label for="cemail">Customer Email:</label>
             <input type="text" name="cemail" value="{{ $customer->cemail }}" class="form-control">
           </div>
+
+          <div class="form-group">
+            <label for="cemail">Customer City:</label>
+            <select class="form-control" name="city_id">
+              @foreach( $cities as $city)
+            <option value="{{$city->id}}" {{$city->id == $customer->city_id?'selected':''}}>{{$city->en_city_name}}</option>
+              @endforeach
+            </select>
+          </div>
+
+
      </div>
      <div class="col-md-5">
         <img src="/storage/images/customers/{{$customer->cimg}}" alt="..." class="img-thumbnail">

@@ -19,6 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('cphone');
             $table->string('caddress');
             $table->string('cemail');
+            $table->string('cimg');
             $table->softDeletes();
             $table->timestamps();
         });

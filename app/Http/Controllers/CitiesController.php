@@ -16,7 +16,8 @@ class CitiesController extends Controller
     public function index()
     {
         //
-        $cities = City::all();
+        $cities = City::paginate(20);
+       
         return view('front.cities.cities_list',compact('cities'));
     }
 
@@ -56,6 +57,8 @@ class CitiesController extends Controller
     public function show($id)
     {
         //
+        $customers = city::find($id)->customer()->get();
+        return view('front.cities.city_customers',compact('customers'));
     }
 
     /**

@@ -9,4 +9,9 @@ class City extends Model
 {
     //
     use softDeletes;
+
+    public function customer()
+    {
+        return $this->hasMany('App\Customer');
+    }
 }

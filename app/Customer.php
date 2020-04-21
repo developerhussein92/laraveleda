@@ -9,4 +9,9 @@ class Customer extends Model
 {
     //
     use SoftDeletes;
+    
+    public function city()
+    {
+        return $this->belongsTo('App\City');
+    }
 }
