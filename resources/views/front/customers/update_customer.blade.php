@@ -36,7 +36,8 @@ Update Customer
             </select>
           </div>
 
-
+ 
+          
      </div>
      <div class="col-md-5">
         <img src="/storage/images/customers/{{$customer->cimg}}" alt="..." class="img-thumbnail">
